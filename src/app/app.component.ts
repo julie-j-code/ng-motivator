@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngmotivator';
+
+  onQuoteCreated(quote){
+    console.log("quote retrieved", quote);
+  }
 }

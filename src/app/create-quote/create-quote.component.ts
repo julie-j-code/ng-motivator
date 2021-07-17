@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // Pour la création du Reactiv Form
 import { FormGroup, FormBuilder, Validators} from "@angular/forms";
+import { ɵEmptyOutletComponent } from '@angular/router';
 
 @Component({
   selector: 'app-create-quote',
@@ -9,6 +10,7 @@ import { FormGroup, FormBuilder, Validators} from "@angular/forms";
 })
 export class CreateQuoteComponent implements OnInit {
   form:FormGroup;
+  @Output() create=new EventEmitter();
 
   constructor(private formBuilder:FormBuilder) { }
 
@@ -22,10 +24,10 @@ export class CreateQuoteComponent implements OnInit {
 
   createQuote(){
     console.log('form valid', this.form.valid);
-    // if(this.form.valid){
-      // il ne restera qu'à ajouter en base les valeurs du formulaire
+    if(this.form.valid){
+      this.create.emit(this.form);
 
-    // }
+     }
   }
 
 }
