@@ -1,0 +1,11 @@
+<p>create-quote!</p>
+<div>
+  <form [formGroup]="form" (ngSubmit)="createQuote()">
+    <input type="text" formControlName="firstname" placeholder="Prénom de l'auteur">
+    <input type="text" formControlName="lastname" placeholder="Nom de l'auteur">
+    <textarea formControlName="quote" rows="10" cols="30" placeholder="Citation"></textarea>
+    <button>Ajouter la citation</button>
+  </form>
+</div>
+
+<div>{{form.value | json}}</div>
