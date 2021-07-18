@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuotesService } from './services/quotes.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ngmotivator';
 
+  constructor(private quoteServices:QuotesService){}
+
   onQuoteCreated(quote){
     console.log("quote retrieved", quote);
+    this.quoteServices.createQuote({
+      firstname:quote.value.firstname,
+      lastname:quote.value.lastname,
+      text:quote.value.quote
+    });
   }
 }
