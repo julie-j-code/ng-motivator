@@ -1,1 +1,7 @@
-<p>backend-quotes works!</p>
+<h3>Editez vos citations</h3>
+
+<ul>
+  <li *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">{{ quote.text }}
+    <button (click)="deleteQuote(quote)">suppr</button>
+  </li>
+</ul>
