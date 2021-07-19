@@ -11,12 +11,18 @@ import { QuotesComponent } from './quotes/quotes.component'
 
 import { QuotesService } from "./services/quotes.service";
 import { CreateQuoteComponent } from './create-quote/create-quote.component';
+import { QuoteDetailsComponent } from "./quote-details/quote-details.component";
+import { BackendHomeComponent } from './backend/backend-home/backend-home.component';
+import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuotesComponent,
     CreateQuoteComponent,
+    QuoteDetailsComponent,
+    BackendHomeComponent,
+    BackendQuotesComponent,
   ],
   imports: [
     BrowserModule,
