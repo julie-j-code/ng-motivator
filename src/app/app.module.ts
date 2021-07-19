@@ -16,7 +16,7 @@ import { CreateQuoteComponent } from './create-quote/create-quote.component';
   declarations: [
     AppComponent,
     QuotesComponent,
-    CreateQuoteComponent
+    CreateQuoteComponent,
   ],
   imports: [
     BrowserModule,

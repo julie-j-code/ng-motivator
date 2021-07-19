@@ -13,10 +13,13 @@ export class AppComponent {
 
   onQuoteCreated(quote){
     console.log("quote retrieved", quote);
-    this.quoteServices.createQuote({
+    let addedQuote = this.quoteServices.createQuote({
       firstname:quote.value.firstname,
       lastname:quote.value.lastname,
       text:quote.value.quote
     });
+    console.log('Added Quote', addedQuote);
   }
+
+
 }

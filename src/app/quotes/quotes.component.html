@@ -1,4 +1,4 @@
 <p>All quotes !</p>
 <ul>
-  <li *ngFor="let quote of quotes$ |async">{{ quote.text }}</li>
+  <li *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">{{ quote.text }}</li>
 </ul>
