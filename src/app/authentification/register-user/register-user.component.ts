@@ -42,8 +42,10 @@ export class RegisterUserComponent implements OnInit {
       .catch(err => {
         console.log('erreur :(', err.message);
       });
+}
 
-
+logoutUser(){
+  this.authService.logout();
 }
 
 }
