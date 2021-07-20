@@ -45,7 +45,7 @@ export class CreateQuoteComponent implements OnInit {
       // on va récupérer les champs de formulaire grâce au formGroup
 
       // this.form.get('firstname').patchValue(data.first);
-      // obligées de passer par une interface pour typer fortement
+      // obligée de passer par une interface pour typer fortement
       this.form.get('firstname').patchValue((data as Quote).firstname);
       this.form.get('lastname').patchValue((data as Quote).lastname)
       this.form.get('quote').patchValue((data as Quote).text);
@@ -67,7 +67,15 @@ export class CreateQuoteComponent implements OnInit {
     }else if(this.isInEditMode){
       this.update.emit(this.form);
       this.isInEditMode = !this.isInEditMode;
+      this.form.reset;
+      this.verb = "ajouter";
     }
+  }
+
+  cancelEdit(){
+    this.isInEditMode=false;
+    this.verb = "ajouter";
+    this.form.reset();
   }
 
 }
