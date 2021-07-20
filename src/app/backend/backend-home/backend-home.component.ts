@@ -23,5 +23,13 @@ export class BackendHomeComponent implements OnInit {
     console.log('Added Quote', addedQuote);
   }
 
-
+ onQuoteUpdated(quote){
+   console.log("quote depuis la méthode oneQuoteUpdated du parent backend-home-component", quote)
+   this.quoteServices.updateQuote({
+     firstname:quote.value.firstname,
+     lastname:quote.value.lastname,
+     text:quote.value.quote,
+     key:quote.value.key
+   })
+ }
 }

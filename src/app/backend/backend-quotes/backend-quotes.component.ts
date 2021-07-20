@@ -22,6 +22,11 @@ export class BackendQuotesComponent implements OnInit {
 
   }
 
+  toggleToEditMode(quote){
+    this.s.editQuote(quote);
+
+  }
+
   showQuoteDetails(quote){
 
   }

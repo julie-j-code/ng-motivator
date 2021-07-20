@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from "rxjs/operators";
 
@@ -8,6 +9,7 @@ import { map } from "rxjs/operators";
 })
 export class QuotesService {
   quotes: Observable<any>;
+  subject=new Subject;
 
 
   constructor(private afDb: AngularFireDatabase) { }
@@ -42,4 +44,19 @@ export class QuotesService {
   deleteQuoteById(id){
     return this.afDb.list('quotes').remove(id);
   }
+
+  // attention : le fait de passer une quote en mode édition
+  // se passe avant l'édition de cette quote
+  editQuote(quote){
+    // subject qui est capable de faire passer une information entre components frères
+    this.subject.next(quote);
+
+
+  }
+
+  updateQuote(quote) {
+    console.log('updateQuote', quote, `quotes/${quote.key}`);
+    return this.afDb.object(`quotes/${quote.key}`).update(quote);
+  }
+
 }
