@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFireModule } from "@angular/fire";
+// import { AngularFireModule } from "@angular/fire";
 // sur versions récentes : attention le cours est out of date
 import { AngularFireAuth, AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireDatabase } from "@angular/fire/database";
+// import { AngularFireDatabase } from "@angular/fire/database";
 // AngularFireAuth met à disposition un observable pour connaitre les données rattachées à l'utilisateur actuellement connecté
 import { Observable } from "rxjs/observable";
-// import * as firebase from "firebase/app";
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,20 @@ export class AuthService {
     this.afAuth.signOut();
 
   }
+
+  async sendVerificationMail() {
+    // contrairement au cours, s'effectue bien via une instance de AngularFireAuth!
+    const user = this.afAuth.currentUser;
+    if(user) {
+      console.log('user in sendEmailVerification', user);
+      (await user).sendEmailVerification().then(() => {
+        console.log('email envoyé');
+      }).catch((error) => {
+        console.error('error sending email', error);
+      });
+    }
+  }
+
 
 
 

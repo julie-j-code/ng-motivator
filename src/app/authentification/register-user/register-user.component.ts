@@ -30,6 +30,7 @@ export class RegisterUserComponent implements OnInit {
     .then(createdUser => {
       console.log('createdUser', createdUser);
       // TODO reset form
+
     })
     .catch(error => console.error(error.message));
   }
@@ -47,5 +48,13 @@ export class RegisterUserComponent implements OnInit {
 logoutUser(){
   this.authService.logout();
 }
+
+sendVerificationMail(){
+  this.authService.sendVerificationMail();
+}
+
+
+
+
 
 }

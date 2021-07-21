@@ -22,6 +22,10 @@
   <div *ngIf="authService.user$ | async">
     <span>connecté en tant que {{ (authService.user$ | async)?.email }}</span>
     <button type="button" (click)="logoutUser()">se déconnecter</button>
+    <button type="button" (click)="sendVerificationMail()">envoyer un email de vérification</button>
+
   </div>
+
+
 
 
