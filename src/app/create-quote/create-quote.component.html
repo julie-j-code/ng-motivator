@@ -1,20 +1,31 @@
-<h3>Enregistrer une citation</h3>
-<div>
-  <form [formGroup]="form" (ngSubmit)="saveQuote()" *ngIf="active">
-    <mat-form-field>
+<div *ngIf="isAdmin">
 
-      <input matInput type="text" formControlName="firstname" placeholder="Prénom de l'auteur">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" formControlName="lastname" placeholder="Nom de l'auteur">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <textarea matInput formControlName="quote" rows="10" cols="30" placeholder="Citation"></textarea>
-    </mat-form-field>
-    <button mat-raised-button color="accent">{{verb}} la citation</button>
-    <button mat-raised-button color="basic" (click)="cancelEdit()" *ngIf="isInEditMode">annuler la modification</button>
-  </form>
+  <h3>Enregistrer une citation</h3>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="saveQuote()" *ngIf="active">
+      <mat-form-field>
+
+        <input matInput type="text" formControlName="firstname" placeholder="Prénom de l'auteur">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="lastname" placeholder="Nom de l'auteur">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <textarea matInput formControlName="quote" rows="10" cols="30" placeholder="Citation"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="accent">{{verb}} la citation</button>
+      <button mat-raised-button color="basic" (click)="cancelEdit()" *ngIf="isInEditMode">annuler la
+        modification</button>
+    </form>
+  </div>
+
+  <div>{{form.value | json}}</div>
 </div>
 
-<div>{{form.value | json}}</div>
+<div *ngIf="!isAdmin">
+  <button mat-raised-button
+        matTooltip="Il vous faut être identifé en tant qu'administrateur pour pouvoir enregistrer une nouvelle citation ?">
+        Veuillez vous connecter avec un compte autorisé à gérer les citations.
+</button>
+</div>

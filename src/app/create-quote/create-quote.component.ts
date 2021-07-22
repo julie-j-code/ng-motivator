@@ -3,7 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 // import { ɵEmptyOutletComponent } from '@angular/router';
 import { QuotesService } from "../services/quotes.service";
-
+import { AuthService } from "../authentification/services/auth.service";
 export interface Quote {
   lastname: string,
   firstname: string,
@@ -28,8 +28,14 @@ export class CreateQuoteComponent implements OnInit {
   verb = "ajouter";
   // flag pour faire un reset des styles du formulaire une fois soumis
   active: boolean = true;
+  // flag pour limiter le crud à un seul utilisateur
+  // et vérifier grâce à notre service l'uid de user$
+ isAdmin: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private quoteServices: QuotesService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private quoteServices: QuotesService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -53,6 +59,19 @@ export class CreateQuoteComponent implements OnInit {
       this.form.get('quote').patchValue((data as Quote).text);
       this.form.get('key').patchValue((data as Quote).key);
 
+    });
+
+    this.authService.user$.subscribe(user => {
+      console.log('user: ', user);
+      // on avait sélectionné userAdmin sur la base de user.uid
+      // la  preuve qu'on pouvait le faire sur la base de usesr.email...
+      if(user && user.email === 'jeannet.julie@gmail.com') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    }, error => {
+      console.error(error);
     });
   }
 
