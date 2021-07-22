@@ -1,6 +1,6 @@
 <h3>Enregistrer une citation</h3>
 <div>
-  <form [formGroup]="form" (ngSubmit)="saveQuote()">
+  <form [formGroup]="form" (ngSubmit)="saveQuote()" *ngIf="active">
     <mat-form-field>
 
       <input matInput type="text" formControlName="firstname" placeholder="Prénom de l'auteur">

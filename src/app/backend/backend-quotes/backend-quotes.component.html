@@ -1,8 +1,8 @@
 <h3>Editez vos citations</h3>
 
-<ul>
-  <li *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">{{ quote.text }}
-    <button (click)="toggleToEditMode(quote)">edit</button>
-    <button (click)="deleteQuote(quote)">suppr</button>
-  </li>
-</ul>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">{{ quote.text }}
+    <button mat-button color="accent" (click)="toggleToEditMode(quote)">edit</button>
+    <button mat-button color="warn" (click)="deleteQuote(quote)">suppr</button>
+  </mat-list-item>
+</mat-list>

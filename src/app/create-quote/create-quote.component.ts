@@ -26,6 +26,8 @@ export class CreateQuoteComponent implements OnInit {
   isInEditMode = false;
   // création d'une variable pour que le text du bouton de soumission s'adapte si on est en mode édition
   verb = "ajouter";
+  // flag pour faire un reset des styles du formulaire une fois soumis
+  active: boolean = true;
 
   constructor(private formBuilder: FormBuilder, private quoteServices: QuotesService) { }
 
@@ -34,7 +36,7 @@ export class CreateQuoteComponent implements OnInit {
       firstname: [""],
       lastname: ["", Validators.required],
       quote: ["", Validators.required],
-      key:[""]
+      key: [""]
     });
 
     this.quoteServices.subject.subscribe(data => {
@@ -61,19 +63,24 @@ export class CreateQuoteComponent implements OnInit {
       return;
     }
     console.log("form is valid");
-    if(!this.isInEditMode){
+    if (!this.isInEditMode) {
       this.verb = "ajouter";
       this.create.emit(this.form);
-    }else if(this.isInEditMode){
+    } else if (this.isInEditMode) {
       this.update.emit(this.form);
       this.isInEditMode = !this.isInEditMode;
-      this.form.reset;
-      this.verb = "ajouter";
     }
+    // console.log('before reset');
+    this.form.reset();
+    // old hack de codeconcept pour remise à zéro des styles du formulaire après soumission
+    this.active=false;
+    setTimeout(() => this.active = true, 0);
+
+    this.verb = "ajouter";
   }
 
-  cancelEdit(){
-    this.isInEditMode=false;
+  cancelEdit() {
+    this.isInEditMode = false;
     this.verb = "ajouter";
     this.form.reset();
   }
