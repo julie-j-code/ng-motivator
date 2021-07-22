@@ -1,31 +1,37 @@
 <h3 *ngIf="!(authService.user$ | async)">Créer un compte</h3>
 
-  <div *ngIf="!(authService.user$ | async)">
-    <form #f=ngForm (ngSubmit)="registerUser()">
-      <input type="text" placeholder="email" name="email" [(ngModel)]="newUser.email">
-      <input type="password" placeholder="mot de passe" name="password" [(ngModel)]="newUser.password">
-      <button type="submit">Créer un compte</button>
-    </form>
-    <hr>
-  </div>
+<div *ngIf="!(authService.user$ | async)">
+  <form #f=ngForm (ngSubmit)="registerUser()">
+    <mat-form-field>
+      <mat-label>Votre email</mat-label>
+      <input matInput type="text" placeholder="email" name="email" [(ngModel)]="newUser.email">
+    </mat-form-field>
+    <mat-form-field>
 
-<h3  *ngIf="!(authService.user$ | async)" >Se connecter </h3>
+      <input matInput type="password" placeholder="mot de passe" name="password" [(ngModel)]="newUser.password">
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Créer un compte</button>
+  </form>
+  <hr>
+</div>
 
-  <div *ngIf="!(authService.user$ | async)">
-    <form #login="ngForm" (ngSubmit)="loginUser()" >
-      <input type="text" placeholder="email" name="email" [(ngModel)]="existingUser.email">
-      <input type="password" placeholder="mot de passe" name="password" [(ngModel)]="existingUser.password">
-      <button type="submit">Se connecter</button>
-    </form>
-  </div>
+<h3 *ngIf="!(authService.user$ | async)">Se connecter </h3>
 
-  <div *ngIf="authService.user$ | async">
-    <span>connecté en tant que {{ (authService.user$ | async)?.email }}</span>
-    <button type="button" (click)="logoutUser()">se déconnecter</button>
-    <button type="button" (click)="sendVerificationMail()">envoyer un email de vérification</button>
+<div *ngIf="!(authService.user$ | async)">
+  <form #login="ngForm" (ngSubmit)="loginUser()">
+    <mat-form-field>
+      <input matInput type="text" placeholder="email" name="email" [(ngModel)]="existingUser.email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="mot de passe" name="password" [(ngModel)]="existingUser.password">
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Se connecter</button>
+  </form>
+</div>
 
-  </div>
+<div *ngIf="authService.user$ | async">
+  <span>connecté en tant que {{ (authService.user$ | async)?.email }}</span>
+  <button mat-raised-button color="primary" type="button" (click)="logoutUser()">se déconnecter</button>
+  <button mat-raised-button color="primary" type="button" (click)="sendVerificationMail()">envoyer un email de vérification</button>
 
-
-
-
+</div>

@@ -1,11 +1,19 @@
 <h3>Enregistrer une citation</h3>
 <div>
   <form [formGroup]="form" (ngSubmit)="saveQuote()">
-    <input type="text" formControlName="firstname" placeholder="Prénom de l'auteur">
-    <input type="text" formControlName="lastname" placeholder="Nom de l'auteur">
-    <textarea formControlName="quote" rows="10" cols="30" placeholder="Citation"></textarea>
-    <button>{{verb}} la citation</button>
-    <button (click)="cancelEdit()" *ngIf="isInEditMode">annuler la modification</button>
+    <mat-form-field>
+
+      <input matInput type="text" formControlName="firstname" placeholder="Prénom de l'auteur">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" formControlName="lastname" placeholder="Nom de l'auteur">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <textarea matInput formControlName="quote" rows="10" cols="30" placeholder="Citation"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent">{{verb}} la citation</button>
+    <button mat-raised-button color="basic" (click)="cancelEdit()" *ngIf="isInEditMode">annuler la modification</button>
   </form>
 </div>
 

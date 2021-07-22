@@ -1,8 +1,16 @@
-<h2>backend-home : Page d'administration</h2>
+<mat-toolbar color="primary">Page d'administration (backend-home)</mat-toolbar>
 <a routerLink="/">front</a>
 <hr>
-<app-register-user></app-register-user>
-<hr>
-
-<app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>
-<app-backend-quotes></app-backend-quotes>
+<mat-tab-group>
+  <mat-tab label="citations">
+    <app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>
+    <app-backend-quotes></app-backend-quotes>
+  </mat-tab>
+  <mat-tab label="connexion">
+    <app-register-user></app-register-user>
+  </mat-tab>
+  <mat-tab label="Contact">
+    <h3>Téléphone</h3>
+    <div>Tel: 06 67 00 14 38</div>
+  </mat-tab>
+</mat-tab-group>

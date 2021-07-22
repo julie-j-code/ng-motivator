@@ -1,4 +1,7 @@
-<p>All quotes !</p>
-<ul>
-  <li *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">{{ quote.text }}</li>
-</ul>
+<mat-toolbar color="primary">Les citations (All quotes !)</mat-toolbar>
+
+<section>
+  <mat-card *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">
+    {{ quote.text }}
+  </mat-card>
+</section>

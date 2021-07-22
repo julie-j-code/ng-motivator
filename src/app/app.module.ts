@@ -17,7 +17,11 @@ import { BackendHomeComponent } from './backend/backend-home/backend-home.compon
 import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
 import { RegisterUserComponent } from './authentification/register-user/register-user.component';
 import { AuthService } from "./authentification/services/auth.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+// material design
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { AuthService } from "./authentification/services/auth.service";
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [QuotesService, AuthService],
   bootstrap: [AppComponent]
