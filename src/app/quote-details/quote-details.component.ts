@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireDatabaseModule, AngularFireObject } from '@angular/fire/database';
 // pour récupérer les paramètres d'une route
 import { ActivatedRoute } from '@angular/router';
+import { Quote } from '../create-quote/create-quote.component';
 
 @Component({
   selector: 'app-quote-details',
@@ -12,10 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 export class QuoteDetailsComponent implements OnInit {
 
    quoteId;
+   quote:Quote;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    // private db:AngularFireDatabase
+    private afDb:AngularFireDatabase
     ) {
    }
 
@@ -23,6 +25,7 @@ export class QuoteDetailsComponent implements OnInit {
     // pour être cohérent, faut que le paramètre dynamique qu'on récupère soit le même que celui de la route
     this.quoteId = this.activatedRoute.snapshot.paramMap.get('id');
   };
+
 
   }
 

@@ -3,29 +3,25 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from "rxjs/operators";
-import { DataSnapshot } from '@angular/fire/database/interfaces';
-import * as firebase from 'firebase';
-import { Router } from "@angular/router";
+import Quote from "../models/quote.model";
+
+// import { DataSnapshot } from '@angular/fire/database/interfaces';
+// import * as firebase from 'firebase';
+// import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuotesService {
-  quotes: Observable<any>;
+  quotes: Observable<Quote>;
   subject=new Subject;
-  appareilsSubject = new Subject<any[]>();
-  appareils=[];
+  // private dbPath = '/quotes';
+  // quotesRef: AngularFireList<Quote>;
 
 
-  constructor(private afDb: AngularFireDatabase) { }
-
-  // getQuotes(): Observable<any[]> {
-  //   // return this.afDb.list('quotes').valueChanges();
-
-  //   return this.afDb.list('quotes').valueChanges().pipe(
-  //     map(quotes => quotes.map(quote => ({ key: quote.key, ...quote.payload.val() })))
-  //   );
-  // }
+  constructor(private afDb: AngularFireDatabase) {
+    // this.quotesRef = afDb.list(this.dbPath);
+   }
 
   getQuotes() {
     return this.afDb.list('quotes').snapshotChanges().pipe(
@@ -33,14 +29,6 @@ export class QuotesService {
     ) );
   }
 
-  getAppareilById(id: number) {
-    const appareil = this.appareils.find(
-      (s) => {
-        return s.id === id;
-      }
-    );
-    return appareil;
-}
 
   createQuote(quote) {
     return this.afDb.list('quotes').push(quote);
