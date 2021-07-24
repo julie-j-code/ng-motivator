@@ -15,23 +15,9 @@
   <hr>
 </div>
 
-<h3 *ngIf="!(authService.user$ | async)">Se connecter </h3>
-
-<div *ngIf="!(authService.user$ | async)">
-  <form #login="ngForm" (ngSubmit)="loginUser()">
-    <mat-form-field>
-      <input matInput type="text" placeholder="email" name="email" [(ngModel)]="existingUser.email">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" placeholder="mot de passe" name="password" [(ngModel)]="existingUser.password">
-    </mat-form-field>
-    <button mat-raised-button color="accent" type="submit">Se connecter</button>
-  </form>
-</div>
 
 <div *ngIf="authService.user$ | async">
-  <span>connecté en tant que {{ (authService.user$ | async)?.email }}</span>
-  <button mat-raised-button color="primary" type="button" (click)="logoutUser()">se déconnecter</button>
+  <hr>
   <button mat-raised-button color="primary" type="button" (click)="sendVerificationMail()">envoyer un email de vérification</button>
 
 </div>

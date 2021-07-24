@@ -1,5 +1,12 @@
-<mat-toolbar color="primary">Les citations (All quotes !)</mat-toolbar>
+<mat-toolbar color="primary">
+  Les citations (All quotes !)
+  <span class="example-spacer"></span>
 
+  <a routerLink="/admin">
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Administration CRUD">flip_to_back</mat-icon>
+  </a>
+
+</mat-toolbar>
 <section>
   <mat-card *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">
     {{ quote.text }}

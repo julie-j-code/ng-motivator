@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from "rxjs/operators";
+import { DataSnapshot } from '@angular/fire/database/interfaces';
+import * as firebase from 'firebase';
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +13,8 @@ import { map } from "rxjs/operators";
 export class QuotesService {
   quotes: Observable<any>;
   subject=new Subject;
+  appareilsSubject = new Subject<any[]>();
+  appareils=[];
 
 
   constructor(private afDb: AngularFireDatabase) { }
@@ -23,19 +28,19 @@ export class QuotesService {
   // }
 
   getQuotes() {
-
     return this.afDb.list('quotes').snapshotChanges().pipe(
       map(quotes => quotes.map(quote => ({ key: quote.key, ...quote.payload.val() as {} }))
     ) );
-
-
-    // return this.afDb.list('quotes').snapshotChanges().pipe(map( action => action
-    //   .map(quote => {
-    //     const key = quote.payload.key;
-    //     const data = quote.payload.val();
-    //     return  data;
-    //   })));
   }
+
+  getAppareilById(id: number) {
+    const appareil = this.appareils.find(
+      (s) => {
+        return s.id === id;
+      }
+    );
+    return appareil;
+}
 
   createQuote(quote) {
     return this.afDb.list('quotes').push(quote);

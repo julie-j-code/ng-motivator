@@ -1,12 +1,16 @@
-<mat-toolbar color="primary">Page d'administration (backend-home)</mat-toolbar>
-<a routerLink="/">front</a>
-<hr>
+<mat-toolbar color="primary">Page d'administration (backend-home)
+  <span class="example-spacer"></span>
+  <a routerLink="/">
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Front-end vue des citations">flip_to_front</mat-icon>
+  </a>
+</mat-toolbar>
 <mat-tab-group>
   <mat-tab label="citations">
     <app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>
     <app-backend-quotes></app-backend-quotes>
   </mat-tab>
   <mat-tab label="connexion">
+    <app-login></app-login>
     <app-register-user></app-register-user>
   </mat-tab>
   <mat-tab label="Contact">

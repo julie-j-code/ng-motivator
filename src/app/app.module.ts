@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component'
+import { LoginComponent } from './authentification/login/login.component';
 
 import { QuotesService } from "./services/quotes.service";
 import { CreateQuoteComponent } from './create-quote/create-quote.component';
@@ -31,7 +32,8 @@ import { MaterialModule } from './material.module';
     QuoteDetailsComponent,
     BackendHomeComponent,
     BackendQuotesComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

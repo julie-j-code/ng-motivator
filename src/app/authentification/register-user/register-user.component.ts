@@ -13,10 +13,7 @@ export class RegisterUserComponent implements OnInit {
     password:""
   }
 
-  existingUser={
-    email:"",
-    password:""
-  }
+
   constructor(public authService:AuthService) { }
 
   ngOnInit(): void {
@@ -35,19 +32,9 @@ export class RegisterUserComponent implements OnInit {
     .catch(error => console.error(error.message));
   }
 
-  loginUser() {
-    this.authService.login(this.existingUser.email, this.existingUser.password)
-      .then(value => {
-        console.log('login réussi :)', value);
-      })
-      .catch(err => {
-        console.log('erreur :(', err.message);
-      });
-}
 
-logoutUser(){
-  this.authService.logout();
-}
+
+
 
 sendVerificationMail(){
   this.authService.sendVerificationMail();
