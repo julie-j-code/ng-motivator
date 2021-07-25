@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from "rxjs/operators";
 import Quote from "../models/quote.model";
+import * as firebase from 'firebase';
 
 // import { DataSnapshot } from '@angular/fire/database/interfaces';
 // import * as firebase from 'firebase';
@@ -14,6 +15,7 @@ import Quote from "../models/quote.model";
 })
 export class QuotesService {
   quotes: Observable<Quote>;
+
   subject=new Subject;
   // private dbPath = '/quotes';
   // quotesRef: AngularFireList<Quote>;
@@ -30,6 +32,8 @@ export class QuotesService {
   }
 
 
+
+
   createQuote(quote) {
     return this.afDb.list('quotes').push(quote);
   }
@@ -43,13 +47,10 @@ export class QuotesService {
   editQuote(quote){
     // subject qui est capable de faire passer une information entre components frères
     this.subject.next(quote);
-
-
   }
 
   updateQuote(quote) {
     console.log('updateQuote', quote, `quotes/${quote.key}`);
     return this.afDb.object(`quotes/${quote.key}`).update(quote);
   }
-
 }
