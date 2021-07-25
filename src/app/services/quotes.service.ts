@@ -14,8 +14,10 @@ import * as firebase from 'firebase';
   providedIn: 'root'
 })
 export class QuotesService {
+  // option 1
   quotes: Observable<Quote>;
-
+  // option 2
+  // quotes:  AngularFireList<Quote>;
   subject=new Subject;
   // private dbPath = '/quotes';
   // quotesRef: AngularFireList<Quote>;
@@ -25,13 +27,21 @@ export class QuotesService {
     // this.quotesRef = afDb.list(this.dbPath);
    }
 
+  //  pour l'option 1
   getQuotes() {
     return this.afDb.list('quotes').snapshotChanges().pipe(
       map(quotes => quotes.map(quote => ({ key: quote.key, ...quote.payload.val() as {} }))
     ) );
   }
 
-
+  // si on déclare quotes : AngularFireList<any>;
+  // l'option 2 ci-dessous marche
+  // moins verbeuse
+  // pourquoi n'a-t-elle pas été utilisée dans le cours ?
+// getQuotes(){
+//   this.quotes = this.afDb.list('quotes');
+//   return this.quotes.valueChanges();
+// }
 
 
   createQuote(quote) {

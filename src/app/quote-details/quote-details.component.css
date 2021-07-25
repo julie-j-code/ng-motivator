@@ -1,0 +1,19 @@
+.mat-card{
+  margin: 16px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-icon{
+  color: white;
+}
+
+.mat-card-content, .mat-card-footer{
+  margin: 50px 20px;
+}
+
+.mat-card-footer{
+  font-size: small;
+}

@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { getMaxListeners } from 'process';
 import { Observable, Subject } from 'rxjs';
 import Quote from '../models/quote.model';
+import { QuotesService } from '../services/quotes.service';
 
 @Component({
   selector: 'app-quote-details',
@@ -15,12 +16,9 @@ import Quote from '../models/quote.model';
 export class QuoteDetailsComponent implements OnInit {
 
   quoteId;
-  // itemValue = '';
-  // quote: Observable<Quote>;
   text;
   firstname;
   lastname;
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,31 +29,17 @@ export class QuoteDetailsComponent implements OnInit {
   ngOnInit() {
     // pour être cohérent, faut que le paramètre dynamique qu'on récupère soit le même que celui de la route
     this.quoteId = this.activatedRoute.snapshot.paramMap.get('id');
-    // this.quote = this.afDb.object('quotes').valueChanges();
-    // return this.text = this.quote[Object.keys(this.quote)[1]].text;
-this.afDb.database.ref('/quotes').orderByChild('key').equalTo(this.quoteId).once('value', snapshot => {
-  snapshot.forEach(childSnapshot => {
-    var childData = childSnapshot.val();
-    this.firstname = childData.firstname;
-    this.lastname = childData.lastname;
-    this.text = childData.text;
-    console.log ('text', this.text);
 
-
-  });
-});
+    return this.afDb.database.ref('/quotes').orderByChild('key').equalTo(this.quoteId).once('value', snapshot => {
+      snapshot.forEach(childSnapshot => {
+        var childData = childSnapshot.val();
+        this.firstname = childData.firstname;
+        this.lastname = childData.lastname;
+        this.text = childData.text;
+        console.log('text', this.text);
+      });
+    });
   };
 
 
-
-
-
 }
-
-
-
-
-
-
-
-

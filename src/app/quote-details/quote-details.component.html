@@ -1,14 +1,28 @@
-{{ quoteId }}
+<mat-toolbar color="primary">
+  Les citations (All quotes !)
+  <span class="example-spacer"></span>
+  <a routerLink="/admin">
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Administration CRUD">flip_to_back</mat-icon>
+  </a>
 
-<h2>Contenu : {{ text | json}}</h2>
-<h3>Nom de l'auteur : {{ firstname | json}}</h3>
-<h3>Prénom de l'auteur : {{ lastname}}</h3>
-
-
-
-
-
-
-
-
-
+</mat-toolbar>
+<section>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Nom : {{ lastname}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        Prénom : {{ firstname}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{text | json}}
+      </p>
+    </mat-card-content>
+    <mat-card-footer>
+      {{quoteId}} (key)
+    </mat-card-footer>
+  </mat-card>
+</section>
