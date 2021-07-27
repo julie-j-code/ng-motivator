@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from "rxjs/operators";
-import Quote from "../models/quote.model";
-import * as firebase from 'firebase';
+import {Quote} from "../models/quote.model";
 
 // import { DataSnapshot } from '@angular/fire/database/interfaces';
 // import * as firebase from 'firebase';

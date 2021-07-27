@@ -4,13 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 // import { ɵEmptyOutletComponent } from '@angular/router';
 import { QuotesService } from "../services/quotes.service";
 import { AuthService } from "../authentification/services/auth.service";
-export interface Quote {
-  lastname: string,
-  firstname: string,
-  text: string,
-  key: string
-
-}
+import {Quote}  from "../models/quote.model";
 
 @Component({
   selector: 'app-create-quote',

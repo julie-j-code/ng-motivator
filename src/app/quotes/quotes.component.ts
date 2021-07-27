@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class QuotesComponent implements OnInit {
   // quotes:AngularFireList<any> = null;
   quotes$;
-  // contenu:string;
+  contenu:string;
 
   constructor(private s:QuotesService, private router:Router) {
     // this.quotes=afDb.list('quotes');
@@ -27,7 +27,7 @@ export class QuotesComponent implements OnInit {
       '/quote', quote.key
     ]);
 
-    // return this.contenu=quote.text;
+    return this.contenu=quote.text;
 
   }
 

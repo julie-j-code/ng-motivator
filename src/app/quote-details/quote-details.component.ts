@@ -1,12 +1,8 @@
-
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireDatabaseModule, AngularFireObject } from '@angular/fire/database';
 // pour récupérer les paramètres d'une route
 import { ActivatedRoute } from '@angular/router';
-import { getMaxListeners } from 'process';
-import { Observable, Subject } from 'rxjs';
-import Quote from '../models/quote.model';
-import { QuotesService } from '../services/quotes.service';
+
 
 @Component({
   selector: 'app-quote-details',
