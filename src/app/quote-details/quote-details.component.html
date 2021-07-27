@@ -10,15 +10,15 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        Nom : {{ lastname}}
+        Nom : {{item?.lastname}}
       </mat-card-title>
       <mat-card-subtitle>
-        Prénom : {{ firstname}}
+        Prénom : {{item?.firstname}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>
-        {{text | json}}
+        {{item?.text}}
       </p>
     </mat-card-content>
     <mat-card-footer>
@@ -26,3 +26,5 @@
     </mat-card-footer>
   </mat-card>
 </section>
+
+
