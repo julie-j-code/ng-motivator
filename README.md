@@ -31,3 +31,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 The ng add command will install Angular Material, the Component Dev Kit (CDK), Angular Animations and ask you the following questions to determine which features to include:
 
 ``ng add @angular/material``
+
+
+## Firebase Deployment
+
+`firebase login`
+`firebase init`
+`firebase deploy`
+
+Do not forget to indicate the correct path - NOT public - BUT dist/name-of-project
